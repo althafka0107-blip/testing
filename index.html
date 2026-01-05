@@ -2,6 +2,41 @@
 <html>
 <head>
     <title>My Portfolio</title>
+
+    <style>
+        /* PAGE FADE IN */
+        body {
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* SECTION ANIMATION */
+        .card {
+            animation: slideUp 1s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* PROJECT HOVER */
+        .project:hover {
+            transform: scale(1.03);
+            transition: 0.3s;
+            background: #e0e0e0;
+        }
+    </style>
 </head>
 
 <body style="font-family: Arial; margin:0; background:#f2f2f2;">
@@ -13,7 +48,7 @@
 </div>
 
 <!-- ABOUT -->
-<div style="background:white; margin:20px; padding:20px; border-radius:10px;">
+<div class="card" style="background:white; margin:20px; padding:20px; border-radius:10px;">
     <h2>About Me</h2>
     <p>
         I am a beginner Unity developer learning game development using C#.
@@ -22,7 +57,7 @@
 </div>
 
 <!-- SKILLS -->
-<div style="background:white; margin:20px; padding:20px; border-radius:10px;">
+<div class="card" style="background:white; margin:20px; padding:20px; border-radius:10px;">
     <h2>Skills</h2>
     <ul>
         <li>Unity Engine</li>
@@ -33,18 +68,22 @@
 </div>
 
 <!-- PROJECTS -->
-<div style="background:white; margin:20px; padding:20px; border-radius:10px;">
+<div class="card" style="background:white; margin:20px; padding:20px; border-radius:10px;">
     <h2>Projects</h2>
 
-    <h3>Player Movement System</h3>
-    <p>Walk, Run, Jump using Character Controller.</p>
+    <div class="project" style="padding:10px; border-radius:8px;">
+        <h3>Player Movement System</h3>
+        <p>Walk, Run, Jump using Character Controller.</p>
+    </div>
 
-    <h3>Enemy AI</h3>
-    <p>Enemy chase and attack using Raycast.</p>
+    <div class="project" style="padding:10px; border-radius:8px; margin-top:10px;">
+        <h3>Enemy AI</h3>
+        <p>Enemy chase and attack using Raycast.</p>
+    </div>
 </div>
 
 <!-- CONTACT -->
-<div style="background:white; margin:20px; padding:20px; border-radius:10px;">
+<div class="card" style="background:white; margin:20px; padding:20px; border-radius:10px;">
     <h2>Contact</h2>
     <p>Email: yourmail@gmail.com</p>
     <p>GitHub: github.com/yourusername</p>
