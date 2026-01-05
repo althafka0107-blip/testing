@@ -4,51 +4,107 @@
     <title>My Portfolio</title>
 
     <style>
-        /* PAGE FADE IN */
         body {
+            font-family: Arial;
+            margin: 0;
+            background: #f2f2f2;
             animation: fadeIn 1.5s ease-in;
         }
 
+        /* PAGE FADE */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
-        /* SECTION ANIMATION */
-        .card {
-            animation: slideUp 1s ease;
+        /* TYPING NAME */
+        .typing {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid white;
+            width: 0;
+            animation: typing 3s steps(20) forwards, blink 0.7s infinite;
         }
 
-        @keyframes slideUp {
-            from {
-                transform: translateY(40px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+        @keyframes typing {
+            to { width: 220px; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* ROLE GLOW */
+        .glow {
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #00ffcc; }
+            to { text-shadow: 0 0 20px #00ffcc; }
+        }
+
+        /* CARD FLOAT */
+        .card {
+            background: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0); }
         }
 
         /* PROJECT HOVER */
+        .project {
+            padding: 10px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
         .project:hover {
-            transform: scale(1.03);
-            transition: 0.3s;
             background: #e0e0e0;
+            transform: scale(1.05);
+        }
+
+        /* SKILL SLIDE */
+        li {
+            transition: transform 0.3s;
+        }
+
+        li:hover {
+            transform: translateX(10px);
+            color: #0077ff;
+        }
+
+        /* CONTACT BOUNCE */
+        .contact p:hover {
+            animation: bounce 0.5s;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
         }
     </style>
 </head>
 
-<body style="font-family: Arial; margin:0; background:#f2f2f2;">
+<body>
 
 <!-- HEADER -->
 <div style="background:#222; color:white; padding:30px; text-align:center;">
-    <h1>Althaf K A</h1>
-    <p>Unity Developer | C# Programmer</p>
+    <h1 class="typing">Althaf K A</h1>
+    <p class="glow">Unity Developer | C# Programmer</p>
 </div>
 
 <!-- ABOUT -->
-<div class="card" style="background:white; margin:20px; padding:20px; border-radius:10px;">
+<div class="card">
     <h2>About Me</h2>
     <p>
         I am a beginner Unity developer learning game development using C#.
@@ -57,7 +113,7 @@
 </div>
 
 <!-- SKILLS -->
-<div class="card" style="background:white; margin:20px; padding:20px; border-radius:10px;">
+<div class="card">
     <h2>Skills</h2>
     <ul>
         <li>Unity Engine</li>
@@ -68,22 +124,22 @@
 </div>
 
 <!-- PROJECTS -->
-<div class="card" style="background:white; margin:20px; padding:20px; border-radius:10px;">
+<div class="card">
     <h2>Projects</h2>
 
-    <div class="project" style="padding:10px; border-radius:8px;">
+    <div class="project">
         <h3>Player Movement System</h3>
         <p>Walk, Run, Jump using Character Controller.</p>
     </div>
 
-    <div class="project" style="padding:10px; border-radius:8px; margin-top:10px;">
+    <div class="project" style="margin-top:10px;">
         <h3>Enemy AI</h3>
         <p>Enemy chase and attack using Raycast.</p>
     </div>
 </div>
 
 <!-- CONTACT -->
-<div class="card" style="background:white; margin:20px; padding:20px; border-radius:10px;">
+<div class="card contact">
     <h2>Contact</h2>
     <p>Email: yourmail@gmail.com</p>
     <p>GitHub: github.com/yourusername</p>
@@ -92,7 +148,3 @@
 <!-- FOOTER -->
 <div style="background:#222; color:white; text-align:center; padding:10px;">
     <p>© 2026 Althaf K A</p>
-</div>
-
-</body>
-</html>
