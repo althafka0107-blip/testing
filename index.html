@@ -1,150 +1,136 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Portfolio</title>
+<style>
+    body {
+        font-family: Arial;
+        margin: 0;
+        min-height: 100vh;
+        background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+        background-size: 400% 400%;
+        animation: gradientMove 10s ease infinite;
+        color: white;
+    }
 
-    <style>
-        body {
-            font-family: Arial;
-            margin: 0;
-            background: #f2f2f2;
-            animation: fadeIn 1.5s ease-in;
-        }
+    @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
 
-        /* PAGE FADE */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+    /* HEADER LIGHT SWEEP */
+    .header {
+        position: relative;
+        overflow: hidden;
+        background: rgba(0,0,0,0.6);
+        padding: 40px;
+        text-align: center;
+    }
 
-        /* TYPING NAME */
-        .typing {
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 3px solid white;
-            width: 0;
-            animation: typing 3s steps(20) forwards, blink 0.7s infinite;
-        }
+    .header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+            120deg,
+            transparent,
+            rgba(255,255,255,0.4),
+            transparent
+        );
+        animation: lightSweep 4s infinite;
+    }
 
-        @keyframes typing {
-            to { width: 220px; }
-        }
+    @keyframes lightSweep {
+        0% { left: -100%; }
+        50% { left: 100%; }
+        100% { left: 100%; }
+    }
 
-        @keyframes blink {
-            50% { border-color: transparent; }
-        }
+    /* TYPING */
+    .typing {
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 3px solid white;
+        width: 0;
+        animation: typing 3s steps(20) forwards, blink 0.7s infinite;
+    }
 
-        /* ROLE GLOW */
-        .glow {
-            animation: glow 2s infinite alternate;
-        }
+    @keyframes typing {
+        to { width: 230px; }
+    }
 
-        @keyframes glow {
-            from { text-shadow: 0 0 5px #00ffcc; }
-            to { text-shadow: 0 0 20px #00ffcc; }
-        }
+    @keyframes blink {
+        50% { border-color: transparent; }
+    }
 
-        /* CARD FLOAT */
-        .card {
-            background: white;
-            margin: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            animation: float 4s ease-in-out infinite;
-        }
+    /* GLOW TEXT */
+    .glow {
+        animation: glow 2s infinite alternate;
+    }
 
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-            100% { transform: translateY(0); }
-        }
+    @keyframes glow {
+        from { text-shadow: 0 0 5px #00ffd5; }
+        to { text-shadow: 0 0 25px #00ffd5; }
+    }
 
-        /* PROJECT HOVER */
-        .project {
-            padding: 10px;
-            border-radius: 8px;
-            transition: all 0.3s;
-        }
+    /* GLASS CARD */
+    .card {
+        background: rgba(255,255,255,0.12);
+        backdrop-filter: blur(10px);
+        margin: 30px;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0,255,255,0.15);
+        transition: transform 0.4s, box-shadow 0.4s;
+        animation: float 4s ease-in-out infinite;
+    }
 
-        .project:hover {
-            background: #e0e0e0;
-            transform: scale(1.05);
-        }
+    .card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 0 40px rgba(0,255,255,0.5);
+    }
 
-        /* SKILL SLIDE */
-        li {
-            transition: transform 0.3s;
-        }
+    @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-6px); }
+        100% { transform: translateY(0); }
+    }
 
-        li:hover {
-            transform: translateX(10px);
-            color: #0077ff;
-        }
+    /* PROJECT NEON */
+    .project {
+        padding: 15px;
+        margin-top: 10px;
+        border-radius: 10px;
+        transition: all 0.4s;
+        border: 1px solid transparent;
+    }
 
-        /* CONTACT BOUNCE */
-        .contact p:hover {
-            animation: bounce 0.5s;
-            cursor: pointer;
-        }
+    .project:hover {
+        border-color: #00ffd5;
+        box-shadow: 0 0 15px #00ffd5;
+        transform: scale(1.05);
+    }
 
-        @keyframes bounce {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-            100% { transform: translateY(0); }
-        }
-    </style>
-</head>
+    /* SKILLS */
+    li {
+        transition: transform 0.3s, color 0.3s;
+    }
 
-<body>
+    li:hover {
+        transform: translateX(12px);
+        color: #00ffd5;
+    }
 
-<!-- HEADER -->
-<div style="background:#222; color:white; padding:30px; text-align:center;">
-    <h1 class="typing">Althaf K A</h1>
-    <p class="glow">Unity Developer | C# Programmer</p>
-</div>
+    /* CONTACT LIGHT */
+    .contact p:hover {
+        text-shadow: 0 0 10px #00ffd5;
+        cursor: pointer;
+    }
 
-<!-- ABOUT -->
-<div class="card">
-    <h2>About Me</h2>
-    <p>
-        I am a beginner Unity developer learning game development using C#.
-        I enjoy creating 2D and 3D games and improving my programming skills.
-    </p>
-</div>
-
-<!-- SKILLS -->
-<div class="card">
-    <h2>Skills</h2>
-    <ul>
-        <li>Unity Engine</li>
-        <li>C# Programming</li>
-        <li>Game Development</li>
-        <li>Git & GitHub</li>
-    </ul>
-</div>
-
-<!-- PROJECTS -->
-<div class="card">
-    <h2>Projects</h2>
-
-    <div class="project">
-        <h3>Player Movement System</h3>
-        <p>Walk, Run, Jump using Character Controller.</p>
-    </div>
-
-    <div class="project" style="margin-top:10px;">
-        <h3>Enemy AI</h3>
-        <p>Enemy chase and attack using Raycast.</p>
-    </div>
-</div>
-
-<!-- CONTACT -->
-<div class="card contact">
-    <h2>Contact</h2>
-    <p>Email: yourmail@gmail.com</p>
-    <p>GitHub: github.com/yourusername</p>
-</div>
-
-<!-- FOOTER -->
-<div style="background:#222; color:white; text-align:center; padding:10px;">
-    <p>© 2026 Althaf K A</p>
+    /* FOOTER */
+    footer {
+        background: rgba(0,0,0,0.6);
+        text-align: center;
+        padding: 15px;
+    }
+</style>
