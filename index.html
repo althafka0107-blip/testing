@@ -1,136 +1,490 @@
-<style>
-    body {
-        font-family: Arial;
-        margin: 0;
-        min-height: 100vh;
-        background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
-        background-size: 400% 400%;
-        animation: gradientMove 10s ease infinite;
-        color: white;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Althaf K.A | Unity Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap');
 
-    @keyframes gradientMove {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
+        :root {
+            --primary: #00f3ff; /* Neon Cyan */
+            --secondary: #bc13fe; /* Neon Purple */
+            --bg: #050505;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text: #e0e0e0;
+        }
 
-    /* HEADER LIGHT SWEEP */
-    .header {
-        position: relative;
-        overflow: hidden;
-        background: rgba(0,0,0,0.6);
-        padding: 40px;
-        text-align: center;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-    .header::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 50%;
-        height: 100%;
-        background: linear-gradient(
-            120deg,
-            transparent,
-            rgba(255,255,255,0.4),
-            transparent
-        );
-        animation: lightSweep 4s infinite;
-    }
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
 
-    @keyframes lightSweep {
-        0% { left: -100%; }
-        50% { left: 100%; }
-        100% { left: 100%; }
-    }
+        /* CANVAS BACKGROUND */
+        #canvas-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #1a1a2e 0%, #000000 100%);
+        }
 
-    /* TYPING */
-    .typing {
-        overflow: hidden;
-        white-space: nowrap;
-        border-right: 3px solid white;
-        width: 0;
-        animation: typing 3s steps(20) forwards, blink 0.7s infinite;
-    }
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+        }
 
-    @keyframes typing {
-        to { width: 230px; }
-    }
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary);
+        }
 
-    @keyframes blink {
-        50% { border-color: transparent; }
-    }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 500;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
 
-    /* GLOW TEXT */
-    .glow {
-        animation: glow 2s infinite alternate;
-    }
+        .nav-links a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 8px var(--primary);
+        }
 
-    @keyframes glow {
-        from { text-shadow: 0 0 5px #00ffd5; }
-        to { text-shadow: 0 0 25px #00ffd5; }
-    }
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
 
-    /* GLASS CARD */
-    .card {
-        background: rgba(255,255,255,0.12);
-        backdrop-filter: blur(10px);
-        margin: 30px;
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 0 20px rgba(0,255,255,0.15);
-        transition: transform 0.4s, box-shadow 0.4s;
-        animation: float 4s ease-in-out infinite;
-    }
+        .hero h2 {
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
 
-    .card:hover {
-        transform: translateY(-10px) scale(1.02);
-        box-shadow: 0 0 40px rgba(0,255,255,0.5);
-    }
+        .glitch-wrapper {
+            position: relative;
+        }
 
-    @keyframes float {
-        0% { transform: translateY(0); }
-        50% { transform: translateY(-6px); }
-        100% { transform: translateY(0); }
-    }
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            line-height: 1;
+            color: white;
+            text-transform: uppercase;
+            position: relative;
+            animation: glitch-anim 3s infinite;
+        }
 
-    /* PROJECT NEON */
-    .project {
-        padding: 15px;
-        margin-top: 10px;
-        border-radius: 10px;
-        transition: all 0.4s;
-        border: 1px solid transparent;
-    }
+        .hero h1::before, .hero h1::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
 
-    .project:hover {
-        border-color: #00ffd5;
-        box-shadow: 0 0 15px #00ffd5;
-        transform: scale(1.05);
-    }
+        .hero h1::before {
+            left: 2px;
+            text-shadow: -1px 0 #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim-2 5s infinite linear alternate-reverse;
+        }
 
-    /* SKILLS */
-    li {
-        transition: transform 0.3s, color 0.3s;
-    }
+        .hero h1::after {
+            left: -2px;
+            text-shadow: -1px 0 #00fff9;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim-2 5s infinite linear alternate-reverse;
+        }
 
-    li:hover {
-        transform: translateX(12px);
-        color: #00ffd5;
-    }
+        .hero p {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            max-width: 600px;
+            color: #aaa;
+        }
 
-    /* CONTACT LIGHT */
-    .contact p:hover {
-        text-shadow: 0 0 10px #00ffd5;
-        cursor: pointer;
-    }
+        .btn {
+            margin-top: 40px;
+            padding: 12px 35px;
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: 0.4s;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-    /* FOOTER */
-    footer {
-        background: rgba(0,0,0,0.6);
-        text-align: center;
-        padding: 15px;
-    }
-</style>
+        .btn:hover {
+            background: var(--primary);
+            color: black;
+            box-shadow: 0 0 20px var(--primary);
+        }
+
+        /* SECTIONS GENERAL */
+        section {
+            padding: 100px 10%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            border-left: 5px solid var(--secondary);
+            padding-left: 20px;
+            display: inline-block;
+        }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            transition: 0.3s;
+        }
+
+        .skill-tags span {
+            display: inline-block;
+            padding: 8px 15px;
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            margin: 5px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .skill-tags span:hover {
+            background: var(--primary);
+            color: black;
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        /* PROJECTS */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* 3D TILT CARD */
+        .project-card {
+            background: rgba(20, 20, 25, 0.8);
+            border-radius: 15px;
+            border: 1px solid var(--glass-border);
+            overflow: hidden;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            transition: transform 0.1s; /* JS handles smoother movement */
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-image {
+            height: 200px;
+            background: #222;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .project-card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.9));
+        }
+
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-content h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: white;
+            font-size: 1.4rem;
+        }
+
+        .card-content p {
+            color: #aaa;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        .card-tech {
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* STATS BAR */
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px 0;
+            margin-top: 50px;
+            background: linear-gradient(90deg, transparent, rgba(188, 19, 254, 0.1), transparent);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-family: 'Orbitron', sans-serif;
+            color: white;
+        }
+
+        .stat-label {
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+            padding-bottom: 50px;
+        }
+
+        .social-links {
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 2rem;
+            margin: 0 15px;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            transform: scale(1.2);
+            text-shadow: 0 0 20px var(--primary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: black;
+            border-top: 1px solid #222;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        /* ANIMATION UTILS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* KEYFRAMES */
+        @keyframes glitch-anim {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) }
+            40% { transform: translate(-2px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(2px, -2px) }
+            100% { transform: translate(0) }
+        }
+        @keyframes glitch-anim-2 {
+            0% { clip: rect(12px, 9999px, 32px, 0); }
+            100% { clip: rect(85px, 9999px, 140px, 0); }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            nav { padding: 20px; }
+            .nav-links { display: none; } /* Mobile menu would go here */
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas-bg"></canvas>
+
+    <nav>
+        <div class="logo">ALTHAF.K.A</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="reveal active">
+            <h2>Unity Developer</h2>
+            <div class="glitch-wrapper">
+                <h1 data-text="ALTHAF K.A">ALTHAF K.A</h1>
+            </div>
+            <p>Crafting Immersive Realities across 2D, 3D, AR & VR Platforms.</p>
+            <a href="#projects" class="btn">Explore Work</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title reveal">Profile_Init</h2>
+        <div class="about-grid">
+            <div class="glass-card reveal">
+                <h3 style="color:var(--primary); margin-bottom:15px; font-family:'Orbitron'">Who I Am</h3>
+                <p style="line-height:1.6; color:#ddd;">
+                    I am a passionate Game Developer specializing in Unity Engine. With a deep understanding of game mechanics and immersive technologies, I bridge the gap between imagination and gameplay. Whether it's optimizing rendering pipelines for mobile or creating complex interaction systems for VR, I build scalable, high-performance experiences.
+                </p>
+            </div>
+            <div class="glass-card reveal">
+                <h3 style="color:var(--secondary); margin-bottom:15px; font-family:'Orbitron'">Tech Stack</h3>
+                <div class="skill-tags">
+                    <span>Unity 3D</span>
+                    <span>C# Scripting</span>
+                    <span>AR Foundation</span>
+                    <span>Oculus VR</span>
+                    <span>Shader Graph</span>
+                    <span>Multiplayer (Photon)</span>
+                    <span>Blender</span>
+                    <span>Git/Version Control</span>
+                    <span>Physics Engines</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-container reveal">
+            <div class="stat-item">
+                <div class="stat-number">4+</div>
+                <div class="stat-label">Years Exp</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Projects</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Dedication</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title reveal">Deployments</h2>
+        <div class="project-grid">
+            
+            <div class="project-card tilt-card reveal">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=900&auto=format&fit=crop" alt="Game Project">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Neon Racer AR</h3>
+                        <p>An Augmented Reality racing game built with AR Foundation. Features real-time plane detection and multiplayer support.</p>
+                    </div>
+                    <div class="card-tech">UNITY • ARKIT • C#</div>
+                </div>
+            </div>
+
+            <div class="project-card tilt-card reveal">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1535905557558-afc4877a26fc?q=80&w=900&auto=format&fit=crop" alt="Game Project">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Cyber RPG</h3>
+                        <p>Open-world 3D RPG optimized for mobile. Custom shader implementation for low-poly aesthetics and high framerates.</p>
+                    </div>
+                    <div class="card-tech">UNITY 3D • HLSL • OPTIMIZATION</div>
+                </div>
+            </div>
+
+            <div class="project-card tilt-card reveal">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1626379953822-baec19c3accd?q=80&w=900&auto=format&fit=crop"
