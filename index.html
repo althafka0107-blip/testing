@@ -5,228 +5,234 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Althaf K.A | Unity Game Developer</title>
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap');
-
-:root {
-    --primary: #00f3ff;
-    --secondary: #bc13fe;
-    --bg: #050505;
-    --glass: rgba(255,255,255,0.06);
-    --border: rgba(255,255,255,0.12);
-    --text: #e0e0e0;
+:root{
+    --primary:#00f3ff;
+    --secondary:#bc13fe;
+    --bg:#050505;
+    --glass:rgba(255,255,255,0.05);
+    --border:rgba(255,255,255,0.1);
+    --text:#e0e0e0;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+
+body{
+    font-family:'Rajdhani',sans-serif;
+    background:var(--bg);
+    color:var(--text);
 }
 
-body {
-    font-family: 'Rajdhani', sans-serif;
-    background: var(--bg);
-    color: var(--text);
+/* ---------------- NAVBAR ---------------- */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:18px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(0,0,0,0.75);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+    z-index:100;
 }
 
-/* ================= NAV ================= */
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 18px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(0,0,0,0.8);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-    z-index: 1000;
+.logo{
+    font-family:'Orbitron',sans-serif;
+    font-size:1.4rem;
+    color:var(--primary);
+    text-shadow:0 0 10px var(--primary);
 }
 
-.logo {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.4rem;
-    color: var(--primary);
+.nav-links a{
+    margin-left:30px;
+    text-decoration:none;
+    color:white;
+    text-transform:uppercase;
+    font-size:0.85rem;
+    transition:.3s;
 }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    margin-left: 25px;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    transition: 0.3s;
+.nav-links a:hover{
+    color:var(--primary);
 }
 
-.nav-links a:hover {
-    color: var(--primary);
+/* ---------------- HERO ---------------- */
+.hero{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:0 20px;
 }
 
-/* ================= HERO ================= */
-.hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+.hero h2{
+    color:var(--secondary);
+    letter-spacing:3px;
+    margin-bottom:10px;
 }
 
-.hero h2 {
-    color: var(--secondary);
-    letter-spacing: 3px;
-    margin-bottom: 10px;
+.hero h1{
+    font-family:'Orbitron',sans-serif;
+    font-size:4.5rem;
+    color:white;
+    text-transform:uppercase;
 }
 
-.hero h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 4.5rem;
-    margin-bottom: 15px;
+.hero p{
+    max-width:600px;
+    margin:20px auto;
+    color:#aaa;
+    font-size:1.1rem;
 }
 
-.hero p {
-    max-width: 600px;
-    color: #aaa;
-    font-size: 1.1rem;
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:12px 35px;
+    border:2px solid var(--primary);
+    color:var(--primary);
+    text-decoration:none;
+    font-family:'Orbitron',sans-serif;
+    transition:.3s;
 }
 
-.btn {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 12px 35px;
-    border: 2px solid var(--primary);
-    color: var(--primary);
-    text-decoration: none;
-    font-family: 'Orbitron';
-    transition: 0.3s;
+.btn:hover{
+    background:var(--primary);
+    color:black;
+    box-shadow:0 0 20px var(--primary);
 }
 
-.btn:hover {
-    background: var(--primary);
-    color: black;
-    box-shadow: 0 0 15px var(--primary);
+/* ---------------- SECTIONS ---------------- */
+section{
+    padding:100px 10%;
 }
 
-/* ================= SECTIONS ================= */
-section {
-    padding: 100px 10%;
+.section-title{
+    font-family:'Orbitron',sans-serif;
+    font-size:2.3rem;
+    border-left:5px solid var(--secondary);
+    padding-left:20px;
+    margin-bottom:50px;
 }
 
-.section-title {
-    font-family: 'Orbitron';
-    font-size: 2.4rem;
-    margin-bottom: 60px;
-    border-left: 5px solid var(--secondary);
-    padding-left: 20px;
+/* ---------------- ABOUT ---------------- */
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
 }
 
-/* ================= ABOUT ================= */
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+.glass{
+    background:var(--glass);
+    border:1px solid var(--border);
+    padding:30px;
+    border-radius:15px;
 }
 
-.glass {
-    background: var(--glass);
-    border: 1px solid var(--border);
-    padding: 30px;
-    border-radius: 15px;
+.skills span{
+    display:inline-block;
+    margin:6px;
+    padding:8px 15px;
+    border:1px solid var(--primary);
+    color:var(--primary);
+    border-radius:5px;
+    font-size:.85rem;
 }
 
-.skill-tags span {
-    display: inline-block;
-    margin: 6px;
-    padding: 8px 14px;
-    border: 1px solid var(--primary);
-    color: var(--primary);
-    font-size: 0.85rem;
-    border-radius: 6px;
+/* ---------------- PROJECTS ---------------- */
+.project-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
 }
 
-/* ================= PROJECTS ================= */
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+.project-card{
+    background:#111;
+    border:1px solid var(--border);
+    border-radius:15px;
+    overflow:hidden;
+    transition:.3s;
 }
 
-.project-card {
-    background: rgba(20,20,25,0.9);
-    border-radius: 15px;
-    overflow: hidden;
-    border: 1px solid var(--border);
+.project-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 25px rgba(0,243,255,.2);
 }
 
-.project-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
+.project-img{
+    height:180px;
+    background:#222;
 }
 
-.project-content {
-    padding: 20px;
+.project-content{
+    padding:20px;
 }
 
-.project-content h3 {
-    font-family: 'Orbitron';
-    margin-bottom: 10px;
+.project-content h3{
+    font-family:'Orbitron',sans-serif;
+    margin-bottom:10px;
 }
 
-.project-content p {
-    color: #aaa;
-    font-size: 0.95rem;
+.project-content p{
+    font-size:.95rem;
+    color:#aaa;
 }
 
-.tech {
-    margin-top: 12px;
-    color: var(--secondary);
-    font-size: 0.8rem;
+.tech{
+    margin-top:12px;
+    color:var(--secondary);
+    font-size:.8rem;
+    font-weight:bold;
 }
 
-/* ================= CONTACT ================= */
-.contact {
-    text-align: center;
+/* ---------------- CONTACT ---------------- */
+.contact{
+    text-align:center;
 }
 
-.contact p {
-    margin: 8px 0;
+.contact p{
+    margin:10px 0;
 }
 
-.socials a {
-    color: white;
-    font-size: 1.8rem;
-    margin: 0 12px;
+.social a{
+    margin:0 15px;
+    font-size:2rem;
+    color:white;
+    transition:.3s;
 }
 
-.socials a:hover {
-    color: var(--primary);
+.social a:hover{
+    color:var(--primary);
 }
 
-/* ================= FOOTER ================= */
-footer {
-    text-align: center;
-    padding: 20px;
-    background: black;
-    color: #666;
-    font-size: 0.8rem;
+/* ---------------- FOOTER ---------------- */
+footer{
+    text-align:center;
+    padding:20px;
+    background:black;
+    color:#666;
+    font-size:.8rem;
 }
 
-/* ================= RESPONSIVE ================= */
-@media(max-width: 768px) {
-    .hero h1 { font-size: 3rem; }
-    .about-grid { grid-template-columns: 1fr; }
-    nav { padding: 15px 20px; }
+/* ---------------- RESPONSIVE ---------------- */
+@media(max-width:768px){
+    .hero h1{font-size:3rem;}
+    .about-grid{grid-template-columns:1fr;}
+    nav{padding:15px 20px;}
+    .nav-links{display:none;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= NAV ================= -->
+<!-- NAV -->
 <nav>
     <div class="logo">ALTHAF K.A</div>
     <div class="nav-links">
@@ -237,111 +243,113 @@ footer {
     </div>
 </nav>
 
-<!-- ================= HERO ================= -->
+<!-- HERO -->
 <section id="home" class="hero">
     <div>
         <h2>Unity Game Developer</h2>
-        <h1>ALTHAF K.A</h1>
+        <h1>Althaf K.A</h1>
         <p>
-            Unity Developer focused on FPS & TPS shooter games, endless runners,
-            and physics-based gameplay experiences.
+            Unity Game Developer specializing in FPS & TPS shooter games,
+            physics-based gameplay, enemy AI, and immersive player mechanics.
         </p>
         <a href="#projects" class="btn">View Projects</a>
     </div>
 </section>
 
-<!-- ================= ABOUT ================= -->
+<!-- ABOUT -->
 <section id="about">
     <h2 class="section-title">About Me</h2>
-
     <div class="about-grid">
+
         <div class="glass">
-            <h3>Who I Am</h3>
+            <h3>Profile</h3>
             <p>
-                I am a Unity Game Developer with hands-on experience in developing
+                I am a passionate Unity Game Developer with experience in building
                 FPS and TPS shooter games, endless runner mechanics, and 2D arcade games.
-                I focus on player controls, shooting systems, enemy AI, and performance optimization.
+                I focus on responsive controls, enemy AI behavior, animations, and
+                performance optimization.
             </p>
         </div>
 
         <div class="glass">
             <h3>Skills</h3>
-            <div class="skill-tags">
+            <div class="skills">
                 <span>Unity 3D</span>
                 <span>C#</span>
                 <span>FPS Shooting</span>
                 <span>TPS Camera</span>
                 <span>Enemy AI</span>
-                <span>2D Games</span>
+                <span>2D & 3D Games</span>
                 <span>Physics</span>
-                <span>Animation</span>
+                <span>Animator</span>
                 <span>Git</span>
             </div>
         </div>
+
     </div>
 </section>
 
-<!-- ================= PROJECTS ================= -->
+<!-- PROJECTS -->
 <section id="projects">
     <h2 class="section-title">Projects</h2>
 
     <div class="project-grid">
 
         <div class="project-card">
-            <img src="fps.jpg" alt="FPS Shooter">
+            <div class="project-img"></div>
             <div class="project-content">
                 <h3>FPS Shooter Game</h3>
                 <p>
-                    First-person shooter featuring gun mechanics, raycast shooting,
-                    enemy AI, health system, and animations.
+                    First-person shooter featuring player movement, weapon shooting,
+                    enemy AI states, health system, and combat animations.
                 </p>
                 <div class="tech">UNITY • C# • FPS SHOOTER</div>
             </div>
         </div>
 
         <div class="project-card">
-            <img src="tps.jpg" alt="TPS Shooter">
+            <div class="project-img"></div>
             <div class="project-content">
                 <h3>TPS Shooter Game</h3>
                 <p>
-                    Third-person shooter with smooth camera follow, combat system,
-                    enemy behavior, and player animations.
+                    Third-person shooter with smooth camera control, aiming system,
+                    enemy combat AI, and character animations.
                 </p>
                 <div class="tech">UNITY • C# • TPS SHOOTER</div>
             </div>
         </div>
 
         <div class="project-card">
-            <img src="runner.jpg" alt="Endless Runner">
+            <div class="project-img"></div>
             <div class="project-content">
-                <h3>Endless Runner</h3>
+                <h3>Endless Runner Game</h3>
                 <p>
-                    Subway-Surfers-style endless runner with obstacles,
-                    collectibles, score system, and increasing difficulty.
+                    Subway-Surfers-style endless runner with obstacles, collectibles,
+                    increasing speed, and scoring mechanics.
                 </p>
-                <div class="tech">UNITY • C# • ENDLESS RUNNER</div>
+                <div class="tech">UNITY • ENDLESS RUNNER</div>
             </div>
         </div>
 
         <div class="project-card">
-            <img src="brick.jpg" alt="Brick Breaker">
+            <div class="project-img"></div>
             <div class="project-content">
                 <h3>2D Brick Breaker</h3>
                 <p>
-                    Classic 2D brick breaker game using Unity physics,
-                    paddle control, and level progression.
+                    Classic 2D brick breaker with ball physics, paddle controls,
+                    level progression, and scoring system.
                 </p>
                 <div class="tech">UNITY • 2D • PHYSICS</div>
             </div>
         </div>
 
         <div class="project-card">
-            <img src="rollingball.jpg" alt="Rolling Ball">
+            <div class="project-img"></div>
             <div class="project-content">
                 <h3>Rolling Ball Game</h3>
                 <p>
                     Physics-based rolling ball game with obstacle navigation
-                    and smooth movement controls.
+                    and smooth player movement.
                 </p>
                 <div class="tech">UNITY • 3D • PHYSICS</div>
             </div>
@@ -350,16 +358,15 @@ footer {
     </div>
 </section>
 
-<!-- ================= CONTACT ================= -->
+<!-- CONTACT -->
 <section id="contact">
     <h2 class="section-title">Contact</h2>
-
     <div class="contact">
         <p><strong>Name:</strong> Althaf K.A</p>
         <p><strong>Phone:</strong> 9895945315</p>
         <p><strong>Email:</strong> althafka0107@gmail.com</p>
 
-        <div class="socials">
+        <div class="social">
             <a href="#"><i class="fab fa-github"></i></a>
             <a href="#"><i class="fab fa-linkedin"></i></a>
         </div>
