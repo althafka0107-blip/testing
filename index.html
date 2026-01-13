@@ -11,9 +11,9 @@
     <style>
         :root {
             --primary: #00f3ff;
-            --accent: #bc13fe; /* Changed to a deep neon purple for a "Game Dev" feel */
-            --bg: #050507;
-            --card-bg: #0e0e12;
+            --accent: #ff0055;
+            --bg: #0a0a0c;
+            --card-bg: #141417;
             --text-main: #f0f0f0;
             --text-dim: #94a3b8;
             --border: rgba(255, 255, 255, 0.08);
@@ -29,15 +29,11 @@
             overflow-x: hidden;
         }
 
-        /* --- VIRTUAL GRID BACKGROUND --- */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
+            background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #0a0a0c 100%);
             z-index: -1;
         }
 
@@ -48,7 +44,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(5, 5, 7, 0.9);
+            background: rgba(10, 10, 12, 0.8);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
@@ -58,7 +54,7 @@
             font-family: 'Syncopate', sans-serif;
             font-weight: 700;
             letter-spacing: 2px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--primary);
         }
 
@@ -67,10 +63,9 @@
             text-decoration: none;
             color: var(--text-dim);
             font-weight: 500;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             transition: 0.3s;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .nav-links a:hover { color: var(--primary); }
@@ -81,7 +76,6 @@
             flex-direction: column;
             justify-content: center;
             padding: 0 10%;
-            background: radial-gradient(circle at 80% 50%, rgba(188, 19, 254, 0.1), transparent 40%);
         }
 
         .hero-label {
@@ -89,58 +83,63 @@
             text-transform: uppercase;
             letter-spacing: 5px;
             font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .hero h1 {
             font-family: 'Syncopate', sans-serif;
-            font-size: clamp(2rem, 7vw, 4.5rem);
-            line-height: 1.1;
-            margin-bottom: 25px;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            line-height: 1;
+            margin-bottom: 20px;
         }
 
         .hero p {
-            max-width: 650px;
-            font-size: 1.1rem;
+            max-width: 700px;
+            font-size: 1.2rem;
             color: var(--text-dim);
-            margin-bottom: 45px;
+            margin-bottom: 40px;
         }
 
         .btn {
-            padding: 16px 35px;
+            padding: 15px 40px;
             border: 1px solid var(--primary);
             color: var(--primary);
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
             transition: 0.4s;
-            text-transform: uppercase;
+            background: transparent;
         }
 
         .btn:hover {
             background: var(--primary);
             color: #000;
-            box-shadow: 0 0 40px rgba(0, 243, 255, 0.3);
-            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.4);
+            transform: translateY(-3px);
         }
 
-        section { padding: 100px 10%; }
+        section { padding: 120px 10%; }
+
+        .section-header { margin-bottom: 60px; }
 
         .section-header h2 {
             font-family: 'Syncopate', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 50px;
-            border-left: 4px solid var(--accent);
-            padding-left: 20px;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
-        /* --- PROJECT GRID --- */
+        .section-header h2::after {
+            content: "";
+            height: 1px;
+            flex-grow: 1;
+            background: var(--border);
+        }
+
         .project-list {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 40px;
         }
 
         .project-card {
@@ -148,58 +147,69 @@
             border: 1px solid var(--border);
             padding: 40px;
             display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 50px;
-            transition: 0.4s ease;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+            transition: 0.3s;
         }
 
         .project-card:hover {
             border-color: var(--primary);
+            background: #18181b;
             transform: scale(1.01);
-            background: #111116;
         }
 
         .project-meta h3 {
             font-family: 'Syncopate', sans-serif;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #fff;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .project-category {
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
         }
 
         .tech-tag {
             font-size: 0.7rem;
-            padding: 4px 10px;
-            background: rgba(0, 243, 255, 0.05);
-            border: 1px solid rgba(0, 243, 255, 0.2);
-            border-radius: 2px;
-            color: var(--primary);
-            margin-right: 5px;
-            margin-top: 8px;
-            display: inline-block;
-        }
-
-        .project-details p {
+            padding: 4px 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 4px;
             color: var(--text-dim);
-            margin-bottom: 15px;
         }
 
-        .feature-list {
-            list-style: none;
-            font-size: 0.9rem;
-            color: var(--text-main);
+        .skill-box {
+            background: rgba(255,255,255,0.02);
+            padding: 30px;
+            border-left: 3px solid var(--accent);
         }
 
-        .feature-list li::before {
-            content: "▹";
-            color: var(--accent);
-            margin-right: 10px;
+        .contact-area {
+            text-align: center;
+            border-top: 1px solid var(--border);
+            padding-top: 80px;
         }
 
-        .contact-area { text-align: center; background: #08080a; }
+        .social-icons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
 
         @media (max-width: 968px) {
-            .project-card { grid-template-columns: 1fr; gap: 20px; padding: 25px; }
-            .hero { padding-top: 100px; }
+            .project-card { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -207,119 +217,102 @@
 <body>
 
 <nav>
-    <div class="logo">ALTHAF.UNITY</div>
+    <div class="logo">ALTHAF.DEV</div>
     <div class="nav-links">
-        <a href="#projects">Deployments</a>
-        <a href="#about">Core Tech</a>
-        <a href="#contact">Contact</a>
+        <a href="#about">Technical Profile</a>
+        <a href="#projects">Systems</a>
+        <a href="#contact">Connect</a>
     </div>
 </nav>
 
 <section class="hero">
-    <div class="hero-label">Unity Game Developer</div>
-    <h1>C# SYSTEMS & <br><span style="color:var(--primary)">GAMEPLAY LOGIC.</span></h1>
+    <div class="hero-label">Unity Engine Specialist</div>
+    <h1>ENGINEERING <br><span style="color:var(--primary)">GAMEPLAY SYSTEMS.</span></h1>
     <p>
-        Focused on building optimized, physics-driven experiences. From tactical shooters to procedural runners, I specialize in creating modular Unity frameworks that scale.
+        Focused on high-performance C# architecture, deterministic physics simulation, and scalable combat frameworks in Unity 3D & 2D.
     </p>
-    <div>
-        <a href="#projects" class="btn">View Technical Portfolio</a>
+    <div class="hero-cta">
+        <a href="#projects" class="btn">EXAMINE SYSTEMS</a>
     </div>
 </section>
 
 <section id="projects">
     <div class="section-header">
-        <h2>FEATURED PROJECTS</h2>
+        <h2>TECHNICAL DEPLOYMENTS</h2>
     </div>
     
     <div class="project-list">
         
         <div class="project-card">
             <div class="project-meta">
+                <div class="project-category">Animation & Control</div>
                 <h3>Advanced TPS Controller</h3>
-                <p style="color: var(--accent); font-size: 0.75rem; letter-spacing: 2px;">3D CHARACTER SYSTEMS</p>
                 <div class="tech-stack">
                     <span class="tech-tag">Cinemachine</span>
-                    <span class="tech-tag">Rigging/IK</span>
+                    <span class="tech-tag">IK Rigging</span>
+                    <span class="tech-tag">Root Motion</span>
                 </div>
             </div>
-            <div class="project-details">
-                <p>A sophisticated Third-Person Shooter framework utilizing <strong>Cinemachine</strong> for dynamic camera blending and <strong>Inverse Kinematics (IK)</strong> for procedural weapon aiming and foot placement.</p>
-                <ul class="feature-list">
-                    <li>Over-the-shoulder aiming transition logic.</li>
-                    <li>State-driven Animator Controller for smooth movement blending.</li>
-                </ul>
+            <div>
+                <p>Developed a high-fidelity Third-Person system utilizing <strong>Cinemachine Brain</strong> for seamless camera transitions. Implemented <strong>Inverse Kinematics (IK)</strong> for procedural weapon handling and environmental interaction.</p>
             </div>
         </div>
 
         <div class="project-card">
             <div class="project-meta">
-                <h3>Tactical FPS Framework</h3>
-                <p style="color: var(--accent); font-size: 0.75rem; letter-spacing: 2px;">COMBAT ENGINEERING</p>
+                <div class="project-category">Combat Systems</div>
+                <h3>Tactical FPS Engine</h3>
                 <div class="tech-stack">
                     <span class="tech-tag">Raycasting</span>
-                    <span class="tech-tag">VFX Pooling</span>
+                    <span class="tech-tag">Object Pooling</span>
+                    <span class="tech-tag">FSM AI</span>
                 </div>
             </div>
-            <div class="project-details">
-                <p>Modular First-Person Shooter framework focused on high-performance combat. Implemented a decoupled weapon system using <strong>ScriptableObjects</strong> for easy data management.</p>
-                <ul class="feature-list">
-                    <li>Deterministic recoil and procedural weapon sway.</li>
-                    <li>Efficient object pooling for muzzle flashes and bullet impacts.</li>
-                </ul>
+            <div>
+                <p>Engineered a modular weapon framework featuring <strong>Raycast Ballistics</strong>, procedural recoil, and sway algorithms. Integrated a <strong>Finite State Machine</strong> for AI sensory perception (Sight & Sound).</p>
             </div>
         </div>
 
         <div class="project-card">
             <div class="project-meta">
-                <h3>Obstacle Runner Engine</h3>
-                <p style="color: var(--accent); font-size: 0.75rem; letter-spacing: 2px;">PROCEDURAL GENERATION</p>
+                <div class="project-category">Optimization</div>
+                <h3>Infinite Runner Framework</h3>
                 <div class="tech-stack">
                     <span class="tech-tag">Level Streaming</span>
-                    <span class="tech-tag">Optimization</span>
+                    <span class="tech-tag">Memory Management</span>
                 </div>
             </div>
-            <div class="project-details">
-                <p>A subway-style infinite runner focused on procedural obstacle spawning. Engineered a <strong>Chunk-based spawning system</strong> that recycles environment pieces to maintain zero memory spikes.</p>
-                <ul class="feature-list">
-                    <li>Dynamic speed scaling based on survival time.</li>
-                    <li>Strict focus on gameplay flow without intrusive collection mechanics.</li>
-                </ul>
+            <div>
+                <p>A procedural forward-running engine focused on obstacle evasion. Built a custom <strong>Chunk-based Level Streaming</strong> system to maintain a stable 60 FPS by eliminating runtime Garbage Collection spikes.</p>
             </div>
         </div>
 
         <div class="project-card">
             <div class="project-meta">
+                <div class="project-category">Physics Simulation</div>
                 <h3>Neo Sphere Run</h3>
-                <p style="color: var(--accent); font-size: 0.75rem; letter-spacing: 2px;">PHYSICS SIMULATION</p>
                 <div class="tech-stack">
                     <span class="tech-tag">Rigidbody</span>
                     <span class="tech-tag">Torque Math</span>
+                    <span class="tech-tag">Vector3</span>
                 </div>
             </div>
-            <div class="project-details">
-                <p>A physics-heavy ball-rolling platformer. Utilizes <strong>AddTorque</strong> and <strong>AddForce</strong> locomotion for realistic momentum-based movement through obstacle-dense levels.</p>
-                <ul class="feature-list">
-                    <li>Friction-based surface interaction for varying terrain.</li>
-                    <li>Physics-layered collision detection for complex obstacles.</li>
-                </ul>
+            <div>
+                <p>A precision physics platformer utilizing <strong>Torque-based locomotion</strong>. Engineered custom friction materials and momentum simulations to handle high-speed navigation through dynamic obstacles.</p>
             </div>
         </div>
 
         <div class="project-card">
             <div class="project-meta">
-                <h3>Brick Breaker 2D</h3>
-                <p style="color: var(--accent); font-size: 0.75rem; letter-spacing: 2px;">ARCADE SYSTEMS</p>
+                <div class="project-category">Arcade Logic</div>
+                <h3>Deterministic Brick Breaker</h3>
                 <div class="tech-stack">
                     <span class="tech-tag">2D Physics</span>
-                    <span class="tech-tag">UI Management</span>
+                    <span class="tech-tag">Observer Pattern</span>
                 </div>
             </div>
-            <div class="project-details">
-                <p>Classic 2D arcade logic focusing on bounce vector math and efficient block state management. Uses a <strong>custom event bus</strong> to handle score and level progression without high coupling.</p>
-                <ul class="feature-list">
-                    <li>Dynamic ball velocity scaling.</li>
-                    <li>Clean UI/Game state separation.</li>
-                </ul>
+            <div>
+                <p>Implemented an event-driven 2D arcade system using the <strong>Observer Pattern</strong>. Focused on decoupled UI/Logic and perfectly deterministic collision resolutions for scalable level progression.</p>
             </div>
         </div>
 
@@ -327,19 +320,19 @@
 </section>
 
 <section id="contact" class="contact-area">
-    <h2 style="font-family: 'Syncopate'; margin-bottom: 20px;">CONTACT_INITIATED</h2>
-    <p style="color: var(--text-dim); margin-bottom: 40px;">Currently accepting project inquiries and technical collaborations for 2026.</p>
+    <div class="hero-label">Initiate Protocol</div>
+    <h2 style="font-family: 'Syncopate'; font-size: 2.5rem; margin-bottom: 20px;">READY TO BUILD?</h2>
     <p>Email: <span style="color: var(--primary)">althafka0107@gmail.com</span></p>
-    <p>Mob: <span style="color: var(--primary)">+91 9895945315</span></p>
+    <p>Tel: <span style="color: var(--primary)">+91 9895945315</span></p>
 
-    <div class="social-icons" style="margin-top: 40px; display: flex; justify-content: center; gap: 30px;">
-        <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
-        <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
     </div>
 </section>
 
-<footer style="text-align: center; padding: 40px; color: #444; font-size: 0.7rem; letter-spacing: 2px;">
-    &copy; 2026 ALTHAF K.A // UNITY CORE // ALL SYSTEMS OPERATIONAL
+<footer style="text-align: center; padding-bottom: 40px; color: var(--text-dim); font-size: 0.7rem; letter-spacing: 2px;">
+    &copy; 2026 ALTHAF K.A // UNITY SYSTEMS ARCHITECT
 </footer>
 
 </body>
