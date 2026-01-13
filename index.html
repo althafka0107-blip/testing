@@ -1,138 +1,344 @@
-<section id="projects">
-    <div class="section-header" style="margin-bottom: 50px;">
-        <h2 class="section-title neon-title">System Deployments</h2>
-        <p style="color: var(--primary); font-family: 'Orbitron'; font-size: 0.8rem; margin-top: -40px; letter-spacing: 2px;">TECHNICAL CASE STUDIES</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Althaf K.A | Senior Unity Developer Portfolio</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #00f3ff;
+            --accent: #ff0055;
+            --bg: #0a0a0c;
+            --card-bg: #141417;
+            --text-main: #f0f0f0;
+            --text-dim: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- GLOW BACKGROUND --- */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #0a0a0c 100%);
+            z-index: -1;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Syncopate', sans-serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .nav-links a {
+            margin-left: 35px;
+            text-decoration: none;
+            color: var(--text-dim);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+        }
+
+        .hero-label {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-family: 'Syncopate', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-bottom: 40px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: transparent;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.4);
+            transform: translateY(-3px);
+        }
+
+        /* --- SECTION GENERIC --- */
+        section { padding: 120px 10%; }
+
+        .section-header {
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .section-header h2::after {
+            content: "";
+            height: 1px;
+            flex-grow: 1;
+            background: var(--border);
+        }
+
+        /* --- GRID LAYOUTS --- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+        }
+
+        /* --- PROJECT CARDS (The "Senior" Upgrade) --- */
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary);
+            background: #18181b;
+        }
+
+        .project-meta h3 {
+            font-family: 'Syncopate', sans-serif;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tech-tag {
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-dim);
+        }
+
+        /* --- SKILLS & ARCHITECTURE --- */
+        .skill-box {
+            background: rgba(255,255,255,0.02);
+            padding: 30px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .skill-box h4 { margin-bottom: 15px; text-transform: uppercase; color: var(--accent); }
+
+        /* --- FOOTER/CONTACT --- */
+        .contact-area {
+            text-align: center;
+            border-top: 1px solid var(--border);
+            padding-top: 80px;
+        }
+
+        .social-icons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .social-icons a { font-size: 1.5rem; color: var(--text-dim); transition: 0.3s; }
+        .social-icons a:hover { color: var(--primary); transform: scale(1.2); }
+
+        @media (max-width: 968px) {
+            .grid-2, .project-card { grid-template-columns: 1fr; }
+            section { padding: 80px 5%; }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">ALTHAF.DEV</div>
+    <div class="nav-links">
+        <a href="#about">Technical Profile</a>
+        <a href="#projects">Systems & Architecture</a>
+        <a href="#contact">Connect</a>
     </div>
+</nav>
 
-    <div class="project-grid">
-
-        <div class="project-card">
-            <div class="project-img" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('your-fps-image.jpg') center/cover;">
-                <i class="fas fa-crosshairs" style="font-size: 3rem; color: var(--primary); opacity: 0.5;"></i>
-            </div>
-            <div class="project-content">
-                <span class="tech-label">CORE ARCHITECTURE</span>
-                <h3>Tactical FPS Framework</h3>
-                <p>
-                    Engineered a modular combat system emphasizing decoupled weapon logic. Implemented <strong>Raycast Ballistics</strong> with procedural sway and a <strong>Finite State Machine (FSM)</strong> for AI behavior.
-                </p>
-                <ul style="color: #888; font-size: 0.85rem; margin-bottom: 15px; list-style: none;">
-                    <li><i class="fas fa-check" style="color: var(--primary); font-size: 0.7rem;"></i> Sensory AI: Sight/Sound Perception</li>
-                    <li><i class="fas fa-check" style="color: var(--primary); font-size: 0.7rem;"></i> Procedural Recoil & Sway Algorithms</li>
-                </ul>
-                <div class="tech">C# • DESIGN PATTERNS • NAVMESH</div>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-img" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('your-tps-image.jpg') center/cover;">
-                <i class="fas fa-user-shield" style="font-size: 3rem; color: var(--secondary); opacity: 0.5;"></i>
-            </div>
-            <div class="project-content">
-                <span class="tech-label">ANIMATION & MATH</span>
-                <h3>Advanced TPS Controller</h3>
-                <p>
-                    Developed a robust 3rd-person system using <strong>Cinemachine</strong> for smooth camera blending. Integrated <strong>Inverse Kinematics (IK)</strong> for procedural foot placement and weapon alignment.
-                </p>
-                <ul style="color: #888; font-size: 0.85rem; margin-bottom: 15px; list-style: none;">
-                    <li><i class="fas fa-check" style="color: var(--secondary); font-size: 0.7rem;"></i> Over-the-shoulder Aiming Logic</li>
-                    <li><i class="fas fa-check" style="color: var(--secondary); font-size: 0.7rem;"></i> Root Motion & Animation Blending</li>
-                </ul>
-                <div class="tech">UNITY • IK RIGGING • CINEMACHINE</div>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-img" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('your-runner-image.jpg') center/cover;">
-                <i class="fas fa-bolt" style="font-size: 3rem; color: #ffeb3b; opacity: 0.5;"></i>
-            </div>
-            <div class="project-content">
-                <span class="tech-label">OPTIMIZATION</span>
-                <h3>Infinite Runner Engine</h3>
-                <p>
-                    Focus on mobile performance through <strong>Object Pooling</strong> and <strong>Chunk-based Level Streaming</strong>. Reduced garbage collection overhead by 40% using reusable data structures.
-                </p>
-                <div class="tech">MEMORY MGMT • POOLING • C#</div>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-img" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('your-sphere-image.jpg') center/cover;">
-                <i class="fas fa-globe" style="font-size: 3rem; color: var(--primary); opacity: 0.5;"></i>
-            </div>
-            <div class="project-content">
-                <span class="tech-label">PHYSICS SIMULATION</span>
-                <h3>Neo Sphere Run</h3>
-                <p>
-                    A precision-control physics game utilizing <strong>Torque-based locomotion</strong>. Engineered custom Physics Materials to simulate varied surface friction and angular momentum.
-                </p>
-                <div class="tech">RIGIDBODY • VECTOR MATH • PHYSICS</div>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-img" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('your-brick-image.jpg') center/cover;">
-                <i class="fas fa-th" style="font-size: 3rem; color: var(--secondary); opacity: 0.5;"></i>
-            </div>
-            <div class="project-content">
-                <span class="tech-label">UI & LOGIC FLOW</span>
-                <h3>Deterministic Arcade 2D</h3>
-                <p>
-                    Reimagined classic mechanics using the <strong>Observer Pattern</strong> to decouple game logic from UI. Optimized for WebGL deployment with low draw-call overhead.
-                </p>
-                <div class="tech">EVENT-DRIVEN • WEBGL • 2D</div>
-            </div>
-        </div>
-
+<section class="hero">
+    <div class="hero-label">Available for 2026 Opportunities</div>
+    <h1>ENGINEERING <br><span style="color:var(--primary)">IMMERSIVE WORLDS.</span></h1>
+    <p>
+        Specializing in high-performance gameplay systems, C# architecture, and AI-driven combat mechanics in Unity. I don't just build games; I build scalable frameworks.
+    </p>
+    <div class="hero-cta">
+        <a href="#projects" class="btn">EXAMINE SYSTEMS</a>
+        <a href="#contact" class="btn" style="border-color: var(--accent); color: var(--accent);">GET IN TOUCH</a>
     </div>
 </section>
 
-<style>
-    /* Professional Additions to your existing CSS */
-    .tech-label {
-        font-family: 'Orbitron';
-        font-size: 0.65rem;
-        color: var(--primary);
-        letter-spacing: 1px;
-        display: block;
-        margin-bottom: 5px;
-        font-weight: 700;
-    }
+<section id="about">
+    <div class="section-header">
+        <h2>TECHNICAL OVERVIEW</h2>
+    </div>
+    <div class="grid-2">
+        <div>
+            <p style="font-size: 1.3rem; margin-bottom: 20px;">
+                I approach Unity development with a focus on <strong>SOLID principles</strong> and <strong>performance optimization</strong>.
+            </p>
+            <p style="color: var(--text-dim);">
+                My expertise lies in developing modular gameplay systems. Whether it's a decoupled Weapon System using ScriptableObjects or a Finite State Machine for Enemy AI, I ensure codebases remain maintainable and extensible for large-scale production.
+            </p>
+        </div>
+        <div class="skill-box">
+            <h4>Core Expertise</h4>
+            <div class="tech-stack">
+                <span class="tech-tag">C# (OOP / Design Patterns)</span>
+                <span class="tech-tag">Unity Physics Engine</span>
+                <span class="tech-tag">Shader Graph</span>
+                <span class="tech-tag">NavMesh AI</span>
+                <span class="tech-tag">Memory Profiling</span>
+                <span class="tech-tag">Git Flow</span>
+                <span class="tech-tag">Addressables</span>
+            </div>
+        </div>
+    </div>
+</section>
 
-    .project-card {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.02);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 4px; /* Professional sharp edges or slight curve */
-        transition: all 0.4s ease;
-    }
+<section id="projects">
+    <div class="section-header">
+        <h2>FEATURED ARCHITECTURE</h2>
+    </div>
+    
+    <div class="project-list">
+        <div class="project-card">
+            <div class="project-meta">
+                <h3>FPS Tactical System</h3>
+                <p style="color: var(--primary); font-size: 0.8rem; margin-bottom: 10px;">CORE GAMEPLAY ENGINEERING</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">State Machines</span>
+                    <span class="tech-tag">Object Pooling</span>
+                    <span class="tech-tag">Raycasting</span>
+                </div>
+            </div>
+            <div>
+                <p>Engineered a modular weapon system supporting projectile and hitscan modes. Implemented <strong>Object Pooling</strong> for VFX and projectiles to maintain a locked 60 FPS on mobile hardware.</p>
+                <ul style="margin-top: 15px; color: var(--text-dim); padding-left: 20px;">
+                    <li>Advanced recoil and procedural sway algorithms.</li>
+                    <li>Enemy AI with sensory perception (Sight/Sound) using Delegate patterns.</li>
+                </ul>
+            </div>
+        </div>
 
-    .project-card:hover {
-        border-color: var(--primary);
-        background: rgba(255, 255, 255, 0.05);
-        transform: translateY(-5px);
-    }
+        <div class="project-card">
+            <div class="project-meta">
+                <h3>Endless Runner Framework</h3>
+                <p style="color: var(--primary); font-size: 0.8rem; margin-bottom: 10px;">PROCEDURAL GENERATION</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Procedural Mesh</span>
+                    <span class="tech-tag">Level Streaming</span>
+                </div>
+            </div>
+            <div>
+                <p>Developed a high-speed procedural environment generator. Managed memory by implementing a <strong>Chunk-based Level Streaming</strong> system, reducing runtime overhead by 40%.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-    .project-content h3 {
-        font-size: 1.4rem;
-        margin-bottom: 10px;
-        color: #fff;
-    }
+<section id="contact" class="contact-area">
+    <div class="hero-label">Initiate Protocol</div>
+    <h2 style="font-family: 'Syncopate'; font-size: 2.5rem; margin-bottom: 20px;">READY TO BUILD?</h2>
+    <p>Email: <span style="color: var(--primary)">althafka0107@gmail.com</span></p>
+    <p>Tel: <span style="color: var(--primary)">+91 9895945315</span></p>
 
-    .project-content p {
-        line-height: 1.5;
-        color: #bbb;
-        margin-bottom: 20px;
-    }
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fas fa-terminal"></i></a>
+    </div>
+</section>
 
-    .tech {
-        margin-top: auto;
-        padding-top: 15px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        font-family: 'Orbitron';
-        font-size: 0.7rem;
-        color: var(--primary);
-    }
-</style>
+<footer style="text-align: center; padding-bottom: 40px; color: var(--text-dim); font-size: 0.8rem; letter-spacing: 2px;">
+    &copy; 2026 ALTHAF K.A // BUILT WITH PERFORMANCE IN MIND
+</footer>
+
+</body>
+</html>
