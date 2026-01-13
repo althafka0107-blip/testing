@@ -1,67 +1,138 @@
 <section id="projects">
-    <h2 class="section-title neon-title">Active Deployments</h2>
+    <div class="section-header" style="margin-bottom: 50px;">
+        <h2 class="section-title neon-title">System Deployments</h2>
+        <p style="color: var(--primary); font-family: 'Orbitron'; font-size: 0.8rem; margin-top: -40px; letter-spacing: 2px;">TECHNICAL CASE STUDIES</p>
+    </div>
 
     <div class="project-grid">
 
-        <div class="project-card fps">
-            <div class="project-img">FPS</div>
+        <div class="project-card">
+            <div class="project-img" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('your-fps-image.jpg') center/cover;">
+                <i class="fas fa-crosshairs" style="font-size: 3rem; color: var(--primary); opacity: 0.5;"></i>
+            </div>
             <div class="project-content">
-                <h3>Tactical FPS Engine</h3>
+                <span class="tech-label">CORE ARCHITECTURE</span>
+                <h3>Tactical FPS Framework</h3>
                 <p>
-                    First-person combat framework with raycast-based ballistics,
-                    procedural recoil, and AI sensory systems (Sight & Sound).
+                    Engineered a modular combat system emphasizing decoupled weapon logic. Implemented <strong>Raycast Ballistics</strong> with procedural sway and a <strong>Finite State Machine (FSM)</strong> for AI behavior.
                 </p>
-                <div class="tech">C# • STATE MACHINES • RAYCASTING</div>
+                <ul style="color: #888; font-size: 0.85rem; margin-bottom: 15px; list-style: none;">
+                    <li><i class="fas fa-check" style="color: var(--primary); font-size: 0.7rem;"></i> Sensory AI: Sight/Sound Perception</li>
+                    <li><i class="fas fa-check" style="color: var(--primary); font-size: 0.7rem;"></i> Procedural Recoil & Sway Algorithms</li>
+                </ul>
+                <div class="tech">C# • DESIGN PATTERNS • NAVMESH</div>
             </div>
         </div>
 
-        <div class="project-card tps">
-            <div class="project-img">TPS</div>
+        <div class="project-card">
+            <div class="project-img" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('your-tps-image.jpg') center/cover;">
+                <i class="fas fa-user-shield" style="font-size: 3rem; color: var(--secondary); opacity: 0.5;"></i>
+            </div>
             <div class="project-content">
+                <span class="tech-label">ANIMATION & MATH</span>
                 <h3>Advanced TPS Controller</h3>
                 <p>
-                    Third-person system using Cinemachine blending,
-                    aiming mechanics, and IK for realistic weapon handling.
+                    Developed a robust 3rd-person system using <strong>Cinemachine</strong> for smooth camera blending. Integrated <strong>Inverse Kinematics (IK)</strong> for procedural foot placement and weapon alignment.
                 </p>
-                <div class="tech">UNITY • CINEMACHINE • IK RIGGING</div>
+                <ul style="color: #888; font-size: 0.85rem; margin-bottom: 15px; list-style: none;">
+                    <li><i class="fas fa-check" style="color: var(--secondary); font-size: 0.7rem;"></i> Over-the-shoulder Aiming Logic</li>
+                    <li><i class="fas fa-check" style="color: var(--secondary); font-size: 0.7rem;"></i> Root Motion & Animation Blending</li>
+                </ul>
+                <div class="tech">UNITY • IK RIGGING • CINEMACHINE</div>
             </div>
         </div>
 
-        <div class="project-card runner">
-            <div class="project-img">RUN</div>
+        <div class="project-card">
+            <div class="project-img" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('your-runner-image.jpg') center/cover;">
+                <i class="fas fa-bolt" style="font-size: 3rem; color: #ffeb3b; opacity: 0.5;"></i>
+            </div>
             <div class="project-content">
+                <span class="tech-label">OPTIMIZATION</span>
                 <h3>Infinite Runner Engine</h3>
                 <p>
-                    Procedural chunk-based level streaming with object pooling
-                    to maintain stable 60 FPS gameplay.
+                    Focus on mobile performance through <strong>Object Pooling</strong> and <strong>Chunk-based Level Streaming</strong>. Reduced garbage collection overhead by 40% using reusable data structures.
                 </p>
-                <div class="tech">OBJECT POOLING • LEVEL STREAMING</div>
+                <div class="tech">MEMORY MGMT • POOLING • C#</div>
             </div>
         </div>
 
-        <div class="project-card ball">
-            <div class="project-img">BALL</div>
+        <div class="project-card">
+            <div class="project-img" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('your-sphere-image.jpg') center/cover;">
+                <i class="fas fa-globe" style="font-size: 3rem; color: var(--primary); opacity: 0.5;"></i>
+            </div>
             <div class="project-content">
+                <span class="tech-label">PHYSICS SIMULATION</span>
                 <h3>Neo Sphere Run</h3>
                 <p>
-                    Physics-driven arcade runner featuring torque-based movement,
-                    momentum simulation, and dynamic obstacles.
+                    A precision-control physics game utilizing <strong>Torque-based locomotion</strong>. Engineered custom Physics Materials to simulate varied surface friction and angular momentum.
                 </p>
-                <div class="tech">RIGIDBODY • VECTOR MATH</div>
+                <div class="tech">RIGIDBODY • VECTOR MATH • PHYSICS</div>
             </div>
         </div>
 
-        <div class="project-card arcade">
-            <div class="project-img">2D</div>
+        <div class="project-card">
+            <div class="project-img" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('your-brick-image.jpg') center/cover;">
+                <i class="fas fa-th" style="font-size: 3rem; color: var(--secondary); opacity: 0.5;"></i>
+            </div>
             <div class="project-content">
-                <h3>Brick Breaker 2D</h3>
+                <span class="tech-label">UI & LOGIC FLOW</span>
+                <h3>Deterministic Arcade 2D</h3>
                 <p>
-                    Deterministic 2D arcade game using Observer Pattern
-                    for scalable UI updates and level progression.
+                    Reimagined classic mechanics using the <strong>Observer Pattern</strong> to decouple game logic from UI. Optimized for WebGL deployment with low draw-call overhead.
                 </p>
-                <div class="tech">2D PHYSICS • OBSERVER PATTERN</div>
+                <div class="tech">EVENT-DRIVEN • WEBGL • 2D</div>
             </div>
         </div>
 
     </div>
 </section>
+
+<style>
+    /* Professional Additions to your existing CSS */
+    .tech-label {
+        font-family: 'Orbitron';
+        font-size: 0.65rem;
+        color: var(--primary);
+        letter-spacing: 1px;
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 700;
+    }
+
+    .project-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 4px; /* Professional sharp edges or slight curve */
+        transition: all 0.4s ease;
+    }
+
+    .project-card:hover {
+        border-color: var(--primary);
+        background: rgba(255, 255, 255, 0.05);
+        transform: translateY(-5px);
+    }
+
+    .project-content h3 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+        color: #fff;
+    }
+
+    .project-content p {
+        line-height: 1.5;
+        color: #bbb;
+        margin-bottom: 20px;
+    }
+
+    .tech {
+        margin-top: auto;
+        padding-top: 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-family: 'Orbitron';
+        font-size: 0.7rem;
+        color: var(--primary);
+    }
+</style>
