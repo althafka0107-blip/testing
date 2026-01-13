@@ -1,420 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Althaf K.A | Unity Game Architect</title>
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --primary: #00f3ff;
-            --secondary: #bc13fe;
-            --bg: #050505;
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
-            --text: #e0e0e0;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Rajdhani', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            overflow-x: hidden;
-        }
-
-        /* ---------------- GAMER BACKGROUND ---------------- */
-        .bg-animation {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at center, #111 0%, #000 100%);
-            overflow: hidden;
-        }
-
-        /* Animated Stars/Particles */
-        .stars {
-            position: absolute;
-            width: 2px; height: 2px;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: moveStars 50s linear infinite;
-        }
-
-        @keyframes moveStars {
-            from { transform: translateY(0); }
-            to { transform: translateY(-2000px); }
-        }
-
-        /* Scanline Effect for Monitor Feel */
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-            background-size: 100% 4px, 3px 100%;
-            z-index: 9999;
-            pointer-events: none;
-            opacity: 0.3;
-        }
-
-        /* ---------------- NAVBAR ---------------- */
-        nav {
-            position: fixed;
-            top: 0; width: 100%;
-            padding: 18px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--border);
-            z-index: 100;
-        }
-
-        .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
-            color: var(--primary);
-            text-shadow: 0 0 10px var(--primary);
-            letter-spacing: 2px;
-        }
-
-        .nav-links a {
-            margin-left: 30px;
-            text-decoration: none;
-            color: white;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            transition: .3s;
-            letter-spacing: 1px;
-        }
-
-        .nav-links a:hover { color: var(--primary); text-shadow: 0 0 8px var(--primary); }
-
-        /* ---------------- HERO ---------------- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            background: radial-gradient(circle at center, rgba(0, 243, 255, 0.05) 0%, transparent 70%);
-        }
-
-        .hero h2 {
-            color: var(--secondary);
-            letter-spacing: 5px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            font-size: 1.2rem;
-        }
-
-        .hero h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            color: white;
-            text-transform: uppercase;
-            line-height: 1.1;
-        }
-
-        .hero p {
-            max-width: 700px;
-            margin: 25px auto;
-            color: #aaa;
-            font-size: 1.2rem;
-            line-height: 1.6;
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 40px;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: bold;
-            transition: .4s;
-            background: transparent;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .btn:hover {
-            background: var(--primary);
-            color: black;
-            box-shadow: 0 0 30px var(--primary);
-            transform: scale(1.05);
-        }
-
-        /* ---------------- SECTIONS ---------------- */
-        section { padding: 100px 10%; }
-
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.3rem;
-            border-left: 5px solid var(--secondary);
-            padding-left: 20px;
-            margin-bottom: 50px;
-            text-transform: uppercase;
-        }
-
-        /* ---------------- ABOUT / SKILLS ---------------- */
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-
-        .glass {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            padding: 40px;
-            border-radius: 2px;
-            backdrop-filter: blur(5px);
-            transition: 0.3s;
-        }
-
-        .glass:hover { border-color: var(--primary); background: rgba(0, 243, 255, 0.02); }
-
-        .skills span {
-            display: inline-block;
-            margin: 6px;
-            padding: 8px 15px;
-            border: 1px solid rgba(0, 243, 255, 0.3);
-            color: var(--primary);
-            font-size: .85rem;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        /* ---------------- PROJECTS ---------------- */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background: #0a0a0a;
-            border: 1px solid var(--border);
-            overflow: hidden;
-            transition: .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.1);
-        }
-
-        .project-img {
-            height: 200px;
-            background: linear-gradient(45deg, #111, #222);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Orbitron';
-            color: #333;
-        }
-
-        .project-content { padding: 25px; }
-
-        .project-content h3 {
-            font-family: 'Orbitron', sans-serif;
-            margin-bottom: 12px;
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        .project-content p { font-size: 0.95rem; color: #999; margin-bottom: 15px; }
-
-        .tech {
-            color: var(--secondary);
-            font-size: .75rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        /* ---------------- CONTACT ---------------- */
-        .contact-card {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .social { margin-top: 30px; }
-
-        .social a {
-            margin: 0 20px;
-            font-size: 2.2rem;
-            color: white;
-            transition: .3s;
-        }
-
-        .social a:hover { color: var(--primary); transform: translateY(-5px); }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            background: black;
-            color: #444;
-            font-size: .8rem;
-            letter-spacing: 2px;
-            border-top: 1px solid var(--border);
-        }
-
-        /* ---------------- RESPONSIVE ---------------- */
-        @media(max-width:768px){
-            .hero h1{ font-size: 3rem; }
-            .about-grid{ grid-template-columns: 1fr; }
-            nav{ padding: 15px 20px; }
-            .nav-links{ display: none; }
-        }
-    </style>
-</head>
-
-<body>
-
-<div class="bg-animation" id="star-container"></div>
-
-<nav>
-    <div class="logo">ALTHAF.CORE</div>
-    <div class="nav-links">
-        <a href="#home">Terminal</a>
-        <a href="#about">Specs</a>
-        <a href="#projects">Deployments</a>
-        <a href="#contact">Signal</a>
-    </div>
-</nav>
-
-<section id="home" class="hero">
-    <div>
-        <h2>Systems Engineer // Unity</h2>
-        <h1>ALTHAF K.A</h1>
-        <p>
-            Architecting high-performance gameplay systems, deterministic physics, 
-            and scalable AI frameworks. Focused on the intersection of code efficiency and player immersion.
-        </p>
-        <a href="#projects" class="btn">Initialize Projects</a>
-    </div>
-</section>
-
-<section id="about">
-    <h2 class="section-title">Technical Specs</h2>
-    <div class="about-grid">
-        <div class="glass">
-            <h3>Architecture Profile</h3>
-            <p style="margin-top:15px; color:#bbb;">
-                I specialize in <strong>SOLID-based C# architecture</strong> for Unity. My workflow prioritizes 
-                ScriptableObject-driven systems and decoupled mechanics to ensure projects are scalable 
-                from prototype to production.
-            </p>
-        </div>
-
-        <div class="glass">
-            <h3>Skill Matrix</h3>
-            <div class="skills" style="margin-top:15px;">
-                <span>Unity 3D / HDRP / URP</span>
-                <span>C# (Advanced OOP)</span>
-                <span>Shader Graph</span>
-                <span>Enemy AI (FSM/BT)</span>
-                <span>Cinemachine & Rigging</span>
-                <span>Physics Optimization</span>
-                <span>Git Flow</span>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section id="projects">
     <h2 class="section-title">Active Deployments</h2>
 
     <div class="project-grid">
 
         <div class="project-card">
-            <div class="project-img">FPS_SYSTEM_V1</div>
+            <div class="project-img">COMBAT_FPS_01</div>
             <div class="project-content">
-                <h3>Tactical Combat Engine</h3>
-                <p>Modular FPS framework featuring raycast-based ballistics, procedural recoil, and an event-driven damage system.</p>
-                <div class="tech">C# • OBJECT POOLING • RAYCASTING</div>
+                <h3>Tactical FPS Engine</h3>
+                <p>A first-person framework featuring raycast-based ballistics, procedural recoil algorithms, and an advanced Enemy AI sensory system (Sight/Sound).</p>
+                <div class="tech">C# • STATE MACHINES • RAYCASTING</div>
             </div>
         </div>
 
         <div class="project-card">
-            <div class="project-img">TPS_CORE_V2</div>
+            <div class="project-img">TPS_ARCH_02</div>
             <div class="project-content">
                 <h3>Advanced TPS Controller</h3>
-                <p>Third-person system with Cinemachine-integrated camera logic, IK rigging for weapon aiming, and root-motion animation.</p>
-                <div class="tech">UNITY • CINEMACHINE • IK</div>
+                <p>Third-person system with Cinemachine camera blending, aiming logic, and Inverse Kinematics (IK) for realistic weapon handling and foot placement.</p>
+                <div class="tech">UNITY • CINEMACHINE • RIGGING</div>
             </div>
         </div>
 
         <div class="project-card">
-            <div class="project-img">PROC_GEN_ENGINE</div>
+            <div class="project-img">RUNNER_GEN_03</div>
             <div class="project-content">
-                <h3>Infinite Terrain Engine</h3>
-                <p>Procedural level generation with object recycling (pooling) and dynamic difficulty scaling based on player progress.</p>
-                <div class="tech">ALGORITHMIC GEN • MEMORY MGMT</div>
+                <h3>Infinite Runner Engine</h3>
+                <p>A high-speed procedural environment generator using a chunk-based level streaming system to reduce memory overhead and ensure 60FPS performance.</p>
+                <div class="tech">OBJECT POOLING • LEVEL STREAMING</div>
             </div>
         </div>
 
         <div class="project-card">
-            <div class="project-img">PHYSICS_SIM_04</div>
+            <div class="project-img">NEO_SPHERE_V1</div>
             <div class="project-content">
-                <h3>Kinematic Physics Lab</h3>
-                <p>Physics-heavy project exploring angular velocity, friction coefficients, and torque-based player movement.</p>
-                <div class="tech">RIGIDBODY • VECTOR MATH</div>
+                <h3>Neo Sphere Run</h3>
+                <p>Physics-driven arcade runner focusing on torque-based movement, angular momentum simulation, and dynamic obstacle navigation in a neon environment.</p>
+                <div class="tech">RIGIDBODY PHYSICS • VECTOR MATH</div>
             </div>
         </div>
 
         <div class="project-card">
-            <div class="project-img">2D_LOGIC_V1</div>
+            <div class="project-img">ARCADE_2D_LOGIC</div>
             <div class="project-content">
-                <h3>Deterministic Arcade System</h3>
-                <p>A 2D architecture focusing on collision matrix optimization and state-driven game flow for mobile platforms.</p>
-                <div class="tech">2D PHYSICS • EVENT BUS</div>
+                <h3>Brick Breaker 2D</h3>
+                <p>A deterministic 2D arcade system built with an event-driven architecture (Observer Pattern) for UI updates and scalable level progression.</p>
+                <div class="tech">2D PHYSICS • OBSERVER PATTERN</div>
             </div>
         </div>
 
     </div>
 </section>
-
-<section id="contact">
-    <h2 class="section-title">Establish Link</h2>
-    <div class="glass contact-card">
-        <p style="font-size: 1.5rem; color: var(--primary); font-family: 'Orbitron';">ALTHAF K.A</p>
-        <p style="margin: 15px 0;">Transmission via: <strong>althafka0107@gmail.com</strong></p>
-        <p>Comm-Link: <strong>+91 9895945315</strong></p>
-
-        <div class="social">
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-        </div>
-    </div>
-</section>
-
-<footer>
-    &copy; 2026 ALTHAF K.A // UNIT_DEV_PORTFOLIO // ALL SYSTEMS NOMINAL
-</footer>
-
-<script>
-    // Generate Stars Dynamically
-    const container = document.getElementById('star-container');
-    for (let i = 0; i < 150; i++) {
-        const star = document.createElement('div');
-        star.className = 'stars';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.animationDuration = (Math.random() * 50 + 20) + 's';
-        star.style.opacity = Math.random();
-        container.appendChild(star);
-    }
-</script>
-
-</body>
-</html>
