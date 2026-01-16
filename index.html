@@ -3,82 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Althaf K.A | Ghost of Unity</title>
+    <title>Althaf K.A | Unity Systems Engineer</title>
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+JP:wght@200;500&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary: #bc002d; /* Crimson Sun/Blood */
-            --accent: #d4af37;  /* Samurai Gold */
-            --bg: #080808;      /* Sumi Ink Black */
-            --card-bg: #121212;
-            --text-main: #e5e5e5; /* Rice Paper White */
-            --text-dim: #888888;
-            --border: rgba(188, 0, 45, 0.3);
+            --primary: #00f3ff;
+            --accent: #ff0055;
+            --bg: #0a0a0c;
+            --card-bg: #141417;
+            --text-main: #f0f0f0;
+            --text-dim: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
-            font-family: 'Noto Serif JP', serif;
+            font-family: 'Space Grotesk', sans-serif;
             background: var(--bg);
             color: var(--text-main);
-            line-height: 1.8;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Ambient Wind/Petal Effect Overlay */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1a0a0a 0%, #080808 100%);
-            z-index: -2;
-        }
-
-        /* Decorative "Stamps" Background */
-        body::after {
-            content: "誉"; /* Honor Kanji */
-            position: fixed;
-            bottom: 50px;
-            right: 50px;
-            font-size: 15rem;
-            color: rgba(188, 0, 45, 0.03);
+            background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #0a0a0c 100%);
             z-index: -1;
-            font-family: serif;
         }
 
         nav {
             position: fixed;
             top: 0; width: 100%;
-            padding: 30px 8%;
+            padding: 20px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(to bottom, rgba(8, 8, 8, 1), rgba(8, 8, 8, 0));
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
             z-index: 1000;
         }
 
         .logo {
-            font-family: 'Cinzel', serif;
+            font-family: 'Syncopate', sans-serif;
             font-weight: 700;
-            letter-spacing: 4px;
-            font-size: 1.4rem;
-            color: var(--text-main);
-            border-left: 4px solid var(--primary);
-            padding-left: 15px;
+            letter-spacing: 2px;
+            font-size: 1.2rem;
+            color: var(--primary);
         }
 
         .nav-links a {
             margin-left: 35px;
             text-decoration: none;
             color: var(--text-dim);
-            font-family: 'Cinzel', serif;
-            font-size: 0.8rem;
+            font-weight: 500;
+            font-size: 0.9rem;
             transition: 0.3s;
-            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .nav-links a:hover { color: var(--primary); }
@@ -88,173 +75,135 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 15%;
-            border-left: 1px solid rgba(255,255,255,0.05);
-            margin-left: 5%;
+            padding: 0 10%;
         }
 
         .hero-label {
-            color: var(--primary);
+            color: var(--accent);
             text-transform: uppercase;
-            letter-spacing: 8px;
-            font-weight: 400;
-            margin-bottom: 20px;
-            font-family: 'Cinzel', serif;
+            letter-spacing: 5px;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
 
         .hero h1 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            line-height: 1.1;
-            margin-bottom: 30px;
-            font-weight: 700;
-            text-shadow: 2px 2px 0px rgba(188,0,45,0.2);
+            font-family: 'Syncopate', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            line-height: 1;
+            margin-bottom: 20px;
         }
 
         .hero p {
-            max-width: 600px;
-            font-size: 1.1rem;
+            max-width: 700px;
+            font-size: 1.2rem;
             color: var(--text-dim);
-            margin-bottom: 50px;
-            font-style: italic;
-            border-left: 2px solid var(--primary);
-            padding-left: 20px;
+            margin-bottom: 40px;
         }
 
         .btn {
-            padding: 18px 50px;
-            border: 1px solid var(--text-main);
-            color: var(--text-main);
+            padding: 15px 40px;
+            border: 1px solid var(--primary);
+            color: var(--primary);
             text-decoration: none;
-            font-family: 'Cinzel', serif;
             font-weight: 700;
-            transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            transition: 0.4s;
             background: transparent;
-            display: inline-block;
-            position: relative;
         }
 
         .btn:hover {
             background: var(--primary);
-            border-color: var(--primary);
-            color: white;
-            letter-spacing: 4px;
+            color: #000;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.4);
+            transform: translateY(-3px);
         }
 
-        section { padding: 100px 10%; }
+        section { padding: 120px 10%; }
 
-        .section-header { margin-bottom: 80px; position: relative; }
+        .section-header { margin-bottom: 60px; }
 
         .section-header h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
-            letter-spacing: 5px;
-            text-align: center;
+            font-family: 'Syncopate', sans-serif;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
-        .section-header::after {
-            content: "⚔";
-            display: block;
-            text-align: center;
-            color: var(--primary);
-            margin-top: 10px;
-            font-size: 1.5rem;
+        .section-header h2::after {
+            content: "";
+            height: 1px;
+            flex-grow: 1;
+            background: var(--border);
         }
 
         .project-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
         }
 
         .project-card {
             background: var(--card-bg);
-            border: 1px solid rgba(255,255,255,0.03);
-            padding: 50px;
-            transition: 0.5s;
-            position: relative;
-            overflow: hidden;
+            border: 1px solid var(--border);
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+            transition: 0.3s;
         }
-
-        .project-card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 3px; height: 0;
-            background: var(--primary);
-            transition: 0.5s;
-        }
-
-        .project-card:hover::before { height: 100%; }
 
         .project-card:hover {
-            background: #1a1a1a;
-            transform: translateY(-10px);
+            border-color: var(--primary);
+            background: #18181b;
+            transform: scale(1.01);
         }
 
         .project-meta h3 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--text-main);
+            font-family: 'Syncopate', sans-serif;
+            margin-bottom: 5px;
+            color: var(--primary);
         }
 
         .project-category {
-            color: var(--primary);
-            font-size: 0.8rem;
+            color: var(--accent);
+            font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
-            display: block;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
         }
 
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 30px;
+            gap: 10px;
+            margin-top: 20px;
         }
 
         .tech-tag {
-            font-size: 0.65rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            padding: 4px 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-dim);
         }
 
         .contact-area {
             text-align: center;
-            background: linear-gradient(to top, #120505, transparent);
-            padding: 150px 10%;
+            border-top: 1px solid var(--border);
+            padding-top: 80px;
         }
 
-        .social-icons a {
-            color: var(--text-main);
-            font-size: 1.5rem;
-            margin: 0 20px;
-            transition: 0.3s;
-        }
-
-        .social-icons a:hover { color: var(--primary); }
-
-        /* Japanese "Hanko" Stamp Look for footer */
-        .hanko {
-            width: 60px;
-            height: 60px;
-            border: 3px solid var(--primary);
-            color: var(--primary);
+        .social-icons {
+            margin-top: 30px;
             display: flex;
-            align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-weight: bold;
-            font-size: 1.2rem;
+            gap: 30px;
         }
 
-        @media (max-width: 768px) {
-            .project-list { grid-template-columns: 1fr; }
-            .hero { padding: 0 5%; margin-left: 0; }
+        @media (max-width: 968px) {
+            .project-card { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -262,80 +211,102 @@
 <body>
 
 <nav>
-    <div class="logo">ALTHAF // 誉</div>
+    <div class="logo">ALTHAF.DEV</div>
     <div class="nav-links">
-        <a href="#projects">The Path</a>
-        <a href="#projects">Mastery</a>
-        <a href="#contact">Messenger</a>
+        <a href="#about">Technical Profile</a>
+        <a href="#projects">Systems</a>
+        <a href="#contact">Connect</a>
     </div>
 </nav>
 
 <section class="hero">
-    <div class="hero-label">Way of the Unity Engine</div>
-    <h1>PRECISION IN <br><span style="color:var(--primary)">EVERY STROKE.</span></h1>
+    <div class="hero-label">Unity Engine Specialist</div>
+    <h1>ENGINEERING <br><span style="color:var(--primary)">GAMEPLAY SYSTEMS.</span></h1>
     <p>
-        Architecting high-performance C# systems with the discipline of a warrior. 
-        Focusing on deterministic physics and lethal combat frameworks.
+        Focused on high-performance C# architecture, deterministic physics simulation, and scalable combat frameworks in Unity 3D & 2D.
     </p>
     <div class="hero-cta">
-        <a href="#projects" class="btn">VIEW THE MASTERY</a>
+        <a href="#projects" class="btn">EXAMINE SYSTEMS</a>
     </div>
 </section>
 
 <section id="projects">
     <div class="section-header">
-        <h2>TECHNIQUES & ARTIFACTS</h2>
+        <h2>TECHNICAL DEPLOYMENTS</h2>
     </div>
     
     <div class="project-list">
         
         <div class="project-card">
-            <span class="project-category">Form & Stance</span>
             <div class="project-meta">
+                <div class="project-category">Animation & Control</div>
                 <h3>Advanced TPS Controller</h3>
-                <p>A fluid Third-Person system. Movement is like the wind, utilizing Cinemachine and IK Rigging for flawless environmental grace.</p>
                 <div class="tech-stack">
-                    <span class="tech-tag">// Cinemachine</span>
-                    <span class="tech-tag">// IK Rigging</span>
-                    <span class="tech-tag">// Root Motion</span>
+                    <span class="tech-tag">Cinemachine</span>
+                    <span class="tech-tag">IK Rigging</span>
+                    <span class="tech-tag">Root Motion</span>
                 </div>
+            </div>
+            <div>
+                <p>Developed a high-fidelity Third-Person system utilizing <strong>Cinemachine Brain</strong> for seamless camera transitions. Implemented <strong>Inverse Kinematics (IK)</strong> for procedural weapon handling and environmental interaction.</p>
             </div>
         </div>
 
         <div class="project-card">
-            <span class="project-category">Steel & Shadow</span>
             <div class="project-meta">
+                <div class="project-category">Combat Systems</div>
                 <h3>Tactical FPS Engine</h3>
-                <p>Modular weaponry designed for lethality. Features raycast ballistics and AI that hunts with sensory perception.</p>
                 <div class="tech-stack">
-                    <span class="tech-tag">// Raycasting</span>
-                    <span class="tech-tag">// FSM AI</span>
-                    <span class="tech-tag">// Object Pooling</span>
+                    <span class="tech-tag">Raycasting</span>
+                    <span class="tech-tag">Object Pooling</span>
+                    <span class="tech-tag">FSM AI</span>
                 </div>
+            </div>
+            <div>
+                <p>Engineered a modular weapon framework featuring <strong>Raycast Ballistics</strong>, procedural recoil, and sway algorithms. Integrated a <strong>Finite State Machine</strong> for AI sensory perception (Sight & Sound).</p>
             </div>
         </div>
 
         <div class="project-card">
-            <span class="project-category">Endless Journey</span>
             <div class="project-meta">
+                <div class="project-category">Optimization</div>
                 <h3>Infinite Runner Framework</h3>
-                <p>Eliminating the chaos of Garbage Collection. A procedural world that streams seamlessly like a flowing river.</p>
                 <div class="tech-stack">
-                    <span class="tech-tag">// Level Streaming</span>
-                    <span class="tech-tag">// Memory Optimization</span>
+                    <span class="tech-tag">Level Streaming</span>
+                    <span class="tech-tag">Memory Management</span>
                 </div>
+            </div>
+            <div>
+                <p>A procedural forward-running engine focused on obstacle evasion. Built a custom <strong>Chunk-based Level Streaming</strong> system to maintain a stable 60 FPS by eliminating runtime Garbage Collection spikes.</p>
             </div>
         </div>
 
         <div class="project-card">
-            <span class="project-category">Forces of Nature</span>
             <div class="project-meta">
+                <div class="project-category">Physics Simulation</div>
                 <h3>Neo Sphere Run</h3>
-                <p>Mastery over physics. Utilizing torque and momentum simulations to navigate dynamic, treacherous landscapes.</p>
                 <div class="tech-stack">
-                    <span class="tech-tag">// Rigidbody</span>
-                    <span class="tech-tag">// Torque Math</span>
+                    <span class="tech-tag">Rigidbody</span>
+                    <span class="tech-tag">Torque Math</span>
+                    <span class="tech-tag">Vector3</span>
                 </div>
+            </div>
+            <div>
+                <p>A precision physics platformer utilizing <strong>Torque-based locomotion</strong>. Engineered custom friction materials and momentum simulations to handle high-speed navigation through dynamic obstacles.</p>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-meta">
+                <div class="project-category">Arcade Logic</div>
+                <h3>Deterministic Brick Breaker</h3>
+                <div class="tech-stack">
+                    <span class="tech-tag">2D Physics</span>
+                    <span class="tech-tag">Observer Pattern</span>
+                </div>
+            </div>
+            <div>
+                <p>Implemented an event-driven 2D arcade system using the <strong>Observer Pattern</strong>. Focused on decoupled UI/Logic and perfectly deterministic collision resolutions for scalable level progression.</p>
             </div>
         </div>
 
@@ -343,11 +314,10 @@
 </section>
 
 <section id="contact" class="contact-area">
-    <div class="hanko">ALTHAF</div>
-    <div class="hero-label">A Warrior's Call</div>
-    <h2 style="font-family: 'Cinzel'; font-size: 2.5rem; margin-bottom: 20px;">BEGIN THE TALE?</h2>
-    <p style="color: var(--accent); margin-bottom: 5px;">althafka0107@gmail.com</p>
-    <p style="margin-bottom: 40px;">+91 9895945315</p>
+    <div class="hero-label">Initiate Protocol</div>
+    <h2 style="font-family: 'Syncopate'; font-size: 2.5rem; margin-bottom: 20px;">READY TO BUILD?</h2>
+    <p>Email: <span style="color: var(--primary)">althafka0107@gmail.com</span></p>
+    <p>Tel: <span style="color: var(--primary)">+91 9895945315</span></p>
 
     <div class="social-icons">
         <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -355,8 +325,8 @@
     </div>
 </section>
 
-<footer style="text-align: center; padding-bottom: 60px; color: var(--text-dim); font-size: 0.7rem; letter-spacing: 4px; font-family: 'Cinzel';">
-    &copy; 2026 ALTHAF K.A // HONOR THROUGH CODE
+<footer style="text-align: center; padding-bottom: 40px; color: var(--text-dim); font-size: 0.7rem; letter-spacing: 2px;">
+    &copy; 2026 ALTHAF K.A // UNITY SYSTEMS ARCHITECT
 </footer>
 
 </body>
